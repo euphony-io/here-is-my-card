@@ -83,7 +83,7 @@
                 android:layout_marginStart="8dp"
                 android:background="@null"
                 android:paddingVertical="4dp"
-                android:text="euphony@gamil.com" />
+                android:text="euphony@gmail.com" />
         </LinearLayout>
 
         <LinearLayout

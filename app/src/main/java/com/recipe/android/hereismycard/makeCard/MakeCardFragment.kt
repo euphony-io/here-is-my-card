@@ -29,7 +29,6 @@ class MakeCardFragment : Fragment(), SelectBgInterface {
         return binding.root
     }
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,6 +37,24 @@ class MakeCardFragment : Fragment(), SelectBgInterface {
             adapter = selectCardBgAdapter
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         }
+
+        binding.btnSend.setOnClickListener {
+            binding.btnSend.playAnimation()
+
+            // start speaker
+
+
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        // finish speaker
+
+
+
+        binding.btnSend.pauseAnimation()
     }
 
     override fun onDestroyView() {

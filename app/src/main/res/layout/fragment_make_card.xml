@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/btn_send"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/paper_plane" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="300dp"
@@ -98,7 +110,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@null"
                     android:gravity="start"
-                    android:hint="euphony@gamil.com"
+                    android:hint="euphony@gmail.com"
                     android:maxLines="1"
                     android:paddingVertical="4dp"
                     android:singleLine="true" />
