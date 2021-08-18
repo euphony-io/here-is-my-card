@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="cardTextStyle">
+        <item name="android:textColor">@color/material_on_surface_emphasis_medium</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+</resources>
