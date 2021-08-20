@@ -23,7 +23,7 @@ With this application, you don't have to carry around your business card anymore
 
 <img src = "https://user-images.githubusercontent.com/68395698/130109455-c5de67ed-545b-460c-ae74-9d4cbb307184.png" width =30% /> <img src = "https://user-images.githubusercontent.com/68395698/130109811-d8a684a5-b967-45cc-944f-64d2121840f0.png" width =30% /> <img src = "https://user-images.githubusercontent.com/68395698/130109759-e812a94b-3d68-4c27-8328-99e62f35280c.png" width =30% />
 
-3. The listener always works when you turn on the app. Press the lower right button and check business cards sent.  That's it!
+3. The listener works except when the speaker turns on. Press the lower right button and check business cards sent.  That's it!
 
 <img src = "https://user-images.githubusercontent.com/68395698/130109251-d5a6414b-f464-4c56-93e0-a8d5b6ee3828.png" width =30% />
 
