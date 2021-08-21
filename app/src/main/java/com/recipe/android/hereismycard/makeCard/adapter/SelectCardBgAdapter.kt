@@ -1,20 +1,29 @@
 package com.recipe.android.hereismycard.makeCard.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.recipe.android.hereismycard.MainActivity.Companion.bgList
 import com.recipe.android.hereismycard.R
 import com.recipe.android.hereismycard.databinding.ItemCardBgBinding
-import com.recipe.android.hereismycard.makeCard.`interface`.SelectBgInterface
 
-class SelectCardBgAdapter(val selectView: SelectBgInterface) : RecyclerView.Adapter<SelectCardBgAdapter.SelectBgViewHolder>() {
+class SelectCardBgAdapter() : RecyclerView.Adapter<SelectCardBgAdapter.SelectBgViewHolder>() {
+    private lateinit var itemClickListener : OnItemClickListener
+
     inner class SelectBgViewHolder(val binding: ItemCardBgBinding) :
         RecyclerView.ViewHolder(binding.root) {
             fun bindWithView(position: Int) {
                 binding.cardBg.setBackgroundResource(bgList[position])
-                itemView.setOnClickListener { selectView.selectBg(position) }
             }
+    }
+
+    interface OnItemClickListener {
+        fun onClick(v: View, position: Int)
+    }
+
+    fun setItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.itemClickListener = onItemClickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectBgViewHolder {
@@ -23,6 +32,9 @@ class SelectCardBgAdapter(val selectView: SelectBgInterface) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: SelectBgViewHolder, position: Int) {
         holder.bindWithView(position)
+        holder.itemView.setOnClickListener {
+            itemClickListener.onClick(it, position)
+        }
     }
 
     override fun getItemCount(): Int = 5
