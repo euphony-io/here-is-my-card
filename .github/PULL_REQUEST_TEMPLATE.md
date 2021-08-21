@@ -1,6 +1,6 @@
 ## Title
 
-## Detials
+## Details
 ### as-is
 
 ### to-be
