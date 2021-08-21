@@ -196,6 +196,7 @@ class MakeCardFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         stopSpeak()
+        stopListen()
         binding.btnSend.pauseAnimation()
     }
 
