@@ -72,10 +72,15 @@ class MakeCardFragment : Fragment() {
 
         binding.btnSend.setOnClickListener {
             if (isSpeak) {
-                binding.btnSend.playAnimation()
-                stopListen()
-                playSpeak()
-                Toast.makeText(requireContext(), "SPEAK ON & LISTEN OFF", Toast.LENGTH_SHORT).show()
+                if(binding.etName.text.toString()==""){
+                    Toast.makeText(requireContext(),"Enter your name",Toast.LENGTH_LONG).show()
+                }else{
+                    binding.btnSend.playAnimation()
+                    stopListen()
+                    playSpeak()
+                    Toast.makeText(requireContext(), "SPEAK ON & LISTEN OFF", Toast.LENGTH_SHORT).show()
+                }
+
             } else {
                 binding.btnSend.pauseAnimation()
                 playListen()
