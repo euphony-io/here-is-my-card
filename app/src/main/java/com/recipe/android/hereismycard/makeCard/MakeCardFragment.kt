@@ -93,12 +93,20 @@ class MakeCardFragment : Fragment() {
     private fun makeCardData() {
         mRxManager.acousticSensor = AcousticSensor { card ->
             Log.i("RESULT_TEXT", card)
-            val split = card.split("/")
-            val name = split[0]
-            val tel = split[1]
-            val email = split[2]
-            val address = split[3]
-            val bgPosition = split[4].toInt()
+            var name = ""
+            var tel = ""
+            var email = ""
+            var address = ""
+            var bgPosition = 0
+            card.split("/").forEachIndexed { idx, split ->
+                when (idx) {
+                    0 -> name = split
+                    1 -> tel = split
+                    2 -> email = split
+                    3 -> address = split
+                    4 -> bgPosition = split.toInt()
+                }
+            }
             val cardData = Card(
                 null,
                 name,
@@ -189,6 +197,7 @@ class MakeCardFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         stopSpeak()
+        stopListen()
         binding.btnSend.pauseAnimation()
     }
 
