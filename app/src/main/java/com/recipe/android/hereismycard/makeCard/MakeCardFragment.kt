@@ -121,7 +121,9 @@ class MakeCardFragment : Fragment() {
             db.cardDao().insertCard(card)
         }).start()
 
-        Toast.makeText(activity, "SAVE CARD SUCCESS!", Toast.LENGTH_LONG).show()
+        if(activity != null) {
+            Toast.makeText(activity, "SAVE CARD SUCCESS!", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun stopListen() {
