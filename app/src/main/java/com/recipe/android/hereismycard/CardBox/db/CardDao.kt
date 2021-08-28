@@ -1,9 +1,6 @@
 package com.recipe.android.hereismycard.CardBox.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface CardDao {
@@ -12,4 +9,7 @@ interface CardDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCard(cards:Card)
+
+    @Delete
+    fun deleteCard(cards:Card)
 }
