@@ -1,6 +1,8 @@
 package com.recipe.android.hereismycard.CardBox
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -16,6 +18,7 @@ import com.recipe.android.hereismycard.CardBox.adapter.CardBoxAdapter
 import com.recipe.android.hereismycard.CardBox.db.AppDatabase
 import com.recipe.android.hereismycard.CardBox.db.Card
 import com.recipe.android.hereismycard.databinding.FragmentCardBoxBinding
+import java.util.*
 
 class CardBoxFragment : Fragment() {
     private var _binding: FragmentCardBoxBinding? = null
@@ -59,6 +62,12 @@ class CardBoxFragment : Fragment() {
             adapter = cardBoxAdapter
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         }
+
+        cardBoxAdapter.setItemClickListener(object : CardBoxAdapter.OnItemClickListener {
+            override fun onClick(v: View, position: Int) {
+                showDialogForDelete(position)
+            }
+        })
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -83,6 +92,42 @@ class CardBoxFragment : Fragment() {
                     cardBoxAdapter.notifyDataSetChanged()
                 })
             }
+        }).start()
+    }
+
+    private fun showDialogForDelete(position: Int) {
+        val builder = AlertDialog.Builder(requireContext())
+            .setTitle("Delete Card")
+            .setMessage("Are you sure you want to delete the business card?")
+
+        val listener = object : DialogInterface.OnClickListener {
+            override fun onClick(dialog: DialogInterface?, which: Int) {
+                when (which) {
+                    DialogInterface.BUTTON_POSITIVE ->
+                        deleteCard(position)
+                    DialogInterface.BUTTON_NEGATIVE ->
+                        return
+                }
+            }
+        }
+
+        builder.apply {
+            setPositiveButton("Yes", listener)
+            setNegativeButton("No", listener)
+            show()
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun deleteCard(position: Int) {
+        java.lang.Thread(java.lang.Runnable {
+            db.cardDao().deleteCard(cardList[position])
+
+            activity?.runOnUiThread(java.lang.Runnable {
+                cardList.removeAt(position)
+                cardBoxAdapter.cardList = cardList
+                cardBoxAdapter.notifyDataSetChanged()
+            })
         }).start()
     }
 }
