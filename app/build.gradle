@@ -61,4 +61,7 @@ dependencies {
 
     // Euphony
     implementation 'euphony.lib:euphony:0.7.1.6'
+
+    // test
+    androidTestImplementation 'androidx.test:rules:1.4.0'
 }
